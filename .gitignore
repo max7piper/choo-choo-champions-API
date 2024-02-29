@@ -1,0 +1,7 @@
+
+*.cache
+*.editorconfig
+*.json
+*.dll
+*.pdb
+*.txt

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/max/Documents/VSCode Workspace/DominoAPI/DominoAPI.csproj": {}
+    "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj": {}
   },
   "projects": {
-    "/Users/max/Documents/VSCode Workspace/DominoAPI/DominoAPI.csproj": {
+    "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/max/Documents/VSCode Workspace/DominoAPI/DominoAPI.csproj",
+        "projectUniqueName": "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj",
         "projectName": "DominoAPI",
-        "projectPath": "/Users/max/Documents/VSCode Workspace/DominoAPI/DominoAPI.csproj",
+        "projectPath": "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj",
         "packagesPath": "/Users/max/.nuget/packages/",
-        "outputPath": "/Users/max/Documents/VSCode Workspace/DominoAPI/obj/",
+        "outputPath": "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/max/.nuget/NuGet/NuGet.Config"

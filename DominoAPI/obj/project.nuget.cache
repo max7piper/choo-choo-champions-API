@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u/PNrIaoKC1DfqEdoBy3Vt2Bv/0fYSmwURS6JnVHMfA0MPVehuEKRJOjIi3gCUvcGak9hUJawHu6idFVhqAmWQ==",
+  "dgSpecHash": "LxNX40SnBoqFHMQ9pO2QTcf9Zh3pJzMmA1E0GyN2otA8NJ9xEPtRNjerJBDBmyuD9QZEubNWnqMoLqrBH21CDQ==",
   "success": true,
-  "projectFilePath": "/Users/max/Documents/VSCode Workspace/DominoAPI/DominoAPI.csproj",
+  "projectFilePath": "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj",
   "expectedPackageFiles": [
     "/Users/max/.nuget/packages/awssdk.core/3.7.100.14/awssdk.core.3.7.100.14.nupkg.sha512",
     "/Users/max/.nuget/packages/awssdk.securitytoken/3.7.100.14/awssdk.securitytoken.3.7.100.14.nupkg.sha512",
