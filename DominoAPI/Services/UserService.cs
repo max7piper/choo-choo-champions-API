@@ -1,4 +1,5 @@
 using DominoAPI.UserObjects;
+using DominoAPI.UserRepositories;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -23,4 +24,6 @@ public class UserService
 
     public async Task<List<User>> GetAsync() =>
         await _userCollection.Find(_ => true).ToListAsync();
+    public async Task CreateAsync(User newUser) =>
+        await _userCollection.InsertOneAsync(newUser);
 }

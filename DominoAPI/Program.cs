@@ -2,6 +2,7 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using DominoAPI.UserObjects;
 using DominoAPI.Services;
+using DominoAPI.UserRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.Configure<UserDatabaseSettings>(
     builder.Configuration.GetSection("UserDatabase"));
 
 builder.Services.AddSingleton<UserService>();
+builder.Services.AddScoped<IUserRepository,UserRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
