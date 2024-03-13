@@ -1,9 +1,6 @@
 using System.Security.Cryptography;
 using DominoAPI.Services;
 using DominoAPI.UserObjects;
-using MongoDB.Libmongocrypt;
-using SharpCompress.Crypto;
-using System;
 using System.Text;
 
 namespace DominoAPI.UserRepositories
@@ -15,9 +12,23 @@ namespace DominoAPI.UserRepositories
         public UserRepository(UserService userService) =>
             _userService = userService;
 
+        public async Task<bool> login(string username, string password)
+        {
+            var users = await _userService.GetAsync();
+            Console.WriteLine(password + ",");
+            password = HashPassword(password);
+            Console.WriteLine(password);
+            return users.Where(u => u.Username!.Equals(username) && u.Password!.Equals(password)).Any();
+        }
+
         public async Task<User> registerUser(User user)
         {
             user.Password = HashPassword(user.Password);
+            var users = await _userService.GetAsync();
+            bool available = !users.Where(u => u.Username!.Equals(user.Username) || u.Email.Equals(user.Email)).Any();
+            if(!available){
+                return null!;
+            }
             await _userService.CreateAsync(user);
             return user;
         }

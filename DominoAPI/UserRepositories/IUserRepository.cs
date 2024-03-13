@@ -13,5 +13,13 @@ namespace DominoAPI.UserRepositories
          /// <param name="user">The user object we are registering into the database.</param>
          /// <returns></returns>
          public Task<User> registerUser(User user);
+
+         /// <summary>
+         /// Logs a user in to the game
+         /// </summary>
+         /// <param name="username">The users username</param>
+         /// <param name="password">The users password, unhashed</param>
+         /// <returns></returns>
+         public Task<bool> login(String username, String password);
     }
 }
