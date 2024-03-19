@@ -32,8 +32,8 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     public async Task<ActionResult<bool>> Login(String username, String password)
     {
-        bool success = await _userRepository.login(username,password);
-        if(success){
+        User success = await _userRepository.login(username,password);
+        if(success != null){
             return Ok(success);
         }
         return BadRequest("Failed to login user. Incorrect username or password");

@@ -20,6 +20,6 @@ namespace DominoAPI.UserRepositories
          /// <param name="username">The users username</param>
          /// <param name="password">The users password, unhashed</param>
          /// <returns></returns>
-         public Task<bool> login(String username, String password);
+         public Task<User> login(String username, String password);
     }
 }
