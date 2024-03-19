@@ -12,13 +12,11 @@ namespace DominoAPI.UserRepositories
         public UserRepository(UserService userService) =>
             _userService = userService;
 
-        public async Task<bool> login(string username, string password)
+        public async Task<User> login(string username, string password)
         {
             var users = await _userService.GetAsync();
-            Console.WriteLine(password + ",");
             password = HashPassword(password);
-            Console.WriteLine(password);
-            return users.Where(u => u.Username!.Equals(username) && u.Password!.Equals(password)).Any();
+            return users.Where(u => u.Username!.Equals(username) && u.Password!.Equals(password)).FirstOrDefault()!;
         }
 
         public async Task<User> registerUser(User user)
