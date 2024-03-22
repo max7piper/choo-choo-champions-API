@@ -63,4 +63,15 @@ public class UserController : ControllerBase
         }
         return NotFound("Profile image not found for the given username.");
     }
+
+    [HttpGet("Profile/{username}")]
+    public async Task<ActionResult<User>> GetProfile(String username)
+    {
+        User user = await  _userRepository.GetUser(username);
+        if(user == null)
+        {
+            return NotFound("No user exists for that username.");
+        }
+        return Ok(user);
+    }
 }

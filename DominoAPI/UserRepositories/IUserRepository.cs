@@ -26,7 +26,7 @@ namespace DominoAPI.UserRepositories
         /// Updates a user's profile image.
         /// </summary>
         /// <param name="username">The user that needs to be updated.</param>
-        /// <returns></returns>
+        /// <returns>The User</returns>
         public Task<User> updateProfileImage(String username, String imageURL);
 
         /// <summary>
@@ -34,6 +34,13 @@ namespace DominoAPI.UserRepositories
         /// </summary>
         /// <param name="username">The username of the user whose profile image URL is to be retrieved.</param>
         /// <returns>The profile image URL, or null if not found.</returns>
-        Task<string> GetProfileImage(string username);
+        public Task<string> GetProfileImage(string username);
+
+        /// <summary>
+        /// Retrieves a user's profile. 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>The user associated with that profile, or none.</returns>
+        public Task<User> GetUser(String username);
     }
 }
