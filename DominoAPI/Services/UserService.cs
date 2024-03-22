@@ -30,4 +30,7 @@ public class UserService
 
     public async Task CreateAsync(User newUser) =>
         await _userCollection.InsertOneAsync(newUser);
+
+    public async Task UpdateAsync(string username, User updatedUser) =>
+        await _userCollection.ReplaceOneAsync(x => x.Username == username, updatedUser);
 }

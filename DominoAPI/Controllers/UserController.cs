@@ -30,12 +30,22 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<bool>> Login(String username, String password)
+    public async Task<ActionResult<User>> Login(String username, String password)
     {
         User success = await _userRepository.login(username,password);
         if(success != null){
             return Ok(success);
         }
         return BadRequest("Failed to login user. Incorrect username or password");
+    }
+
+    [HttpPost("UpdateProfileImage")]
+    public async Task<ActionResult<User>> UpdateProfileImage(String username, String imageURL)
+    {
+        User result = await _userRepository.updateProfileImage(username, imageURL);
+        if(result != null){
+            return Ok(result);
+        }
+        return BadRequest("Could not find or update that image.");
     }
 }

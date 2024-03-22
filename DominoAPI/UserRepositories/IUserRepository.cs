@@ -21,5 +21,12 @@ namespace DominoAPI.UserRepositories
          /// <param name="password">The users password, unhashed</param>
          /// <returns></returns>
          public Task<User> login(String username, String password);
+
+        /// <summary>
+        /// Updates a user's profile image.
+        /// </summary>
+        /// <param name="username">The user that needs to be updated.</param>
+        /// <returns></returns>
+         public Task<User> updateProfileImage(String username, String imageURL);
     }
 }

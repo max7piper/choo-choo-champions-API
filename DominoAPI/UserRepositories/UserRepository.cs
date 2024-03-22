@@ -31,6 +31,19 @@ namespace DominoAPI.UserRepositories
             return user;
         }
 
+        public async Task<User> updateProfileImage(string username, string imageURL)
+        {
+            // get the user and update them
+            User user = await _userService.GetByUsername(username);
+            if(user!=null){
+                user.ImageLink = imageURL;
+                await _userService.UpdateAsync(username, user);
+            }
+
+            // return the updated user
+            return await _userService.GetByUsername(username);
+        }
+
         private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
