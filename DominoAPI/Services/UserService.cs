@@ -37,6 +37,6 @@ public class UserService
         {
             return user.ImageLink;
         }
-        return null;
+        return null!;
     }
 }

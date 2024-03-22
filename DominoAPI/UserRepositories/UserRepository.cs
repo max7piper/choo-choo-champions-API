@@ -56,7 +56,12 @@ namespace DominoAPI.UserRepositories
             {
                 return user.ImageLink;
             }
-            return null;
+            return null!;
+        }
+
+        public Task<User> GetUser(string username)
+        {
+            return _userService.GetByUsername(username)!;
         }
 
         private string HashPassword(string password)

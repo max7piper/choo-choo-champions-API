@@ -1230,19 +1230,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\arjun\\.nuget\\packages\\": {}
+    "/Users/max/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\arjun\\OneDrive\\Documents\\GitHub\\choo-choo-champions-API\\DominoAPI\\DominoAPI.csproj",
+      "projectUniqueName": "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj",
       "projectName": "DominoAPI",
-      "projectPath": "C:\\Users\\arjun\\OneDrive\\Documents\\GitHub\\choo-choo-champions-API\\DominoAPI\\DominoAPI.csproj",
-      "packagesPath": "C:\\Users\\arjun\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\arjun\\OneDrive\\Documents\\GitHub\\choo-choo-champions-API\\DominoAPI\\obj\\",
+      "projectPath": "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj",
+      "packagesPath": "/Users/max/.nuget/packages/",
+      "outputPath": "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\arjun\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/max/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -1260,11 +1260,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1303,7 +1298,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/7.0.100/libexec/sdk/7.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

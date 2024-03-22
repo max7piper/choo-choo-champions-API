@@ -8,3 +8,6 @@
 DominoAPI/bin/Debug/net7.0/DominoAPI.dll
 DominoAPI/bin/Debug/net7.0/DominoAPI.exe
 DominoAPI/bin/Debug/net7.0/DominoAPI.pdb
+/DominoAPI/obj/Debug
+/DominoAPI/bin/Debug
+/DominoAPI/obj
