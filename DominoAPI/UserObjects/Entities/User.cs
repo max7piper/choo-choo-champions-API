@@ -28,4 +28,6 @@ public class User
     public int WinRanking {get; set;} = 0;
 
     public int PointRanking {get; set;} = 0;
+
+    public String ImageLink {get; set;} = String.Empty;
 }

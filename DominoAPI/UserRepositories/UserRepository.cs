@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
+using System.Text;
 using DominoAPI.Services;
 using DominoAPI.UserObjects;
-using System.Text;
 
 namespace DominoAPI.UserRepositories
 {
@@ -9,26 +9,54 @@ namespace DominoAPI.UserRepositories
     {
         private readonly UserService _userService;
 
-        public UserRepository(UserService userService) =>
-            _userService = userService;
+        public UserRepository(UserService userService) => _userService = userService;
 
         public async Task<User> login(string username, string password)
         {
             var users = await _userService.GetAsync();
             password = HashPassword(password);
-            return users.Where(u => u.Username!.Equals(username) && u.Password!.Equals(password)).FirstOrDefault()!;
+            return users
+                .Where(u => u.Username!.Equals(username) && u.Password!.Equals(password))
+                .FirstOrDefault()!;
         }
 
         public async Task<User> registerUser(User user)
         {
             user.Password = HashPassword(user.Password);
             var users = await _userService.GetAsync();
-            bool available = !users.Where(u => u.Username!.Equals(user.Username) || u.Email.Equals(user.Email)).Any();
-            if(!available){
+            bool available = !users
+                .Where(u => u.Username!.Equals(user.Username) || u.Email.Equals(user.Email))
+                .Any();
+            if (!available)
+            {
                 return null!;
             }
             await _userService.CreateAsync(user);
             return user;
+        }
+
+        public async Task<User> updateProfileImage(string username, string imageURL)
+        {
+            // get the user and update them
+            User user = await _userService.GetByUsername(username);
+            if (user != null)
+            {
+                user.ImageLink = imageURL;
+                await _userService.UpdateAsync(username, user);
+            }
+
+            // return the updated user
+            return await _userService.GetByUsername(username);
+        }
+
+        public async Task<string> GetProfileImage(string username)
+        {
+            User user = await _userService.GetByUsername(username);
+            if (user != null && !string.IsNullOrEmpty(user.ImageLink))
+            {
+                return user.ImageLink;
+            }
+            return null;
         }
 
         private string HashPassword(string password)
