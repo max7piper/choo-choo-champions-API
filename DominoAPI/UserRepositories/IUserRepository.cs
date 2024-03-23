@@ -52,5 +52,10 @@ namespace DominoAPI.UserRepositories
         /// <returns>True if the password is changed successfully, otherwise false.</returns>
         public Task<bool> ChangePassword(string username, string oldPassword, string newPassword);
 
+        /// Generates a JWT for the user, which will be used for verification purposes.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>The JWT.</returns>
+        public String GetJWT(String username);
     }
 }
