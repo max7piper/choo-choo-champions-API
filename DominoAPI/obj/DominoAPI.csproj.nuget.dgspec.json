@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj": {}
+    "C:\\Users\\arjun\\OneDrive\\Documents\\GitHub\\choo-choo-champions-API\\DominoAPI\\DominoAPI.csproj": {}
   },
   "projects": {
-    "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj": {
+    "C:\\Users\\arjun\\OneDrive\\Documents\\GitHub\\choo-choo-champions-API\\DominoAPI\\DominoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj",
+        "projectUniqueName": "C:\\Users\\arjun\\OneDrive\\Documents\\GitHub\\choo-choo-champions-API\\DominoAPI\\DominoAPI.csproj",
         "projectName": "DominoAPI",
-        "projectPath": "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/DominoAPI.csproj",
-        "packagesPath": "/Users/max/.nuget/packages/",
-        "outputPath": "/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/",
+        "projectPath": "C:\\Users\\arjun\\OneDrive\\Documents\\GitHub\\choo-choo-champions-API\\DominoAPI\\DominoAPI.csproj",
+        "packagesPath": "C:\\Users\\arjun\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arjun\\OneDrive\\Documents\\GitHub\\choo-choo-champions-API\\DominoAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/max/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\arjun\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -70,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/7.0.100/libexec/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

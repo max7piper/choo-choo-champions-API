@@ -67,11 +67,22 @@ public class UserController : ControllerBase
     [HttpGet("Profile/{username}")]
     public async Task<ActionResult<User>> GetProfile(String username)
     {
-        User user = await  _userRepository.GetUser(username);
-        if(user == null)
+        User user = await _userRepository.GetUser(username);
+        if (user == null)
         {
             return NotFound("No user exists for that username.");
         }
         return Ok(user);
+    }
+
+    [HttpPost("changePassword")]
+    public async Task<ActionResult> ChangePassword(string username, string oldPassword, string newPassword)
+    {
+        var result = await _userRepository.ChangePassword(username, oldPassword, newPassword);
+        if (result)
+        {
+            return Ok("Password changed successfully.");
+        }
+        return BadRequest("Failed to change password. Incorrect username or old password.");
     }
 }

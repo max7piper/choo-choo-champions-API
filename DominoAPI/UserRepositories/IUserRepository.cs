@@ -42,5 +42,15 @@ namespace DominoAPI.UserRepositories
         /// <param name="username"></param>
         /// <returns>The user associated with that profile, or none.</returns>
         public Task<User> GetUser(String username);
+
+        /// <summary>
+        /// Changes the password for a user.
+        /// </summary>
+        /// <param name="username">The username of the user whose password is being changed.</param>
+        /// <param name="oldPassword">The old password for verification.</param>
+        /// <param name="newPassword">The new password to set.</param>
+        /// <returns>True if the password is changed successfully, otherwise false.</returns>
+        public Task<bool> ChangePassword(string username, string oldPassword, string newPassword);
+
     }
 }

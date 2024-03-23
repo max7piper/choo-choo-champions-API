@@ -64,6 +64,18 @@ namespace DominoAPI.UserRepositories
             return _userService.GetByUsername(username)!;
         }
 
+        public async Task<bool> ChangePassword(string username, string oldPassword, string newPassword)
+        {
+            var user = await login(username, oldPassword);
+            if (user != null)
+            {
+                user.Password = HashPassword(newPassword);
+                await _userService.UpdateAsync(username, user);
+                return true;
+            }
+            return false;
+        }
+
         private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
