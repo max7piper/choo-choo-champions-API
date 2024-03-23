@@ -95,11 +95,26 @@ namespace DominoAPI.UserRepositories
             var token = new JwtSecurityToken(
                 issuer: _config["JwtSettings:Issuer"],
                 audience: _config["JwtSettings:Audience"],
-                expires: DateTime.UtcNow.AddHours(2), 
+                expires: DateTime.UtcNow.AddHours(2),
                 signingCredentials: credentials
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+
+        public async Task<bool> ChangePassword(string username, string oldPassword, string newPassword)
+        {
+            var user = await login(username, oldPassword);
+            if (user != null)
+            {
+                user.Password = HashPassword(newPassword);
+                await _userService.UpdateAsync(username, user);
+                return true;
+            }
+            return false;
+        }
+
     }
+
 }
