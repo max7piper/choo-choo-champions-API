@@ -1,16 +1,22 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Cryptography;
 using System.Text;
 using DominoAPI.Services;
 using DominoAPI.UserObjects;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DominoAPI.UserRepositories
 {
     public class UserRepository : IUserRepository
     {
         private readonly UserService _userService;
+        private readonly IConfiguration _config;
 
-        public UserRepository(UserService userService) => _userService = userService;
-
+        public UserRepository(UserService userService, IConfiguration config)
+        {
+            _userService = userService;
+            _config = config;
+        }
         public async Task<User> login(string username, string password)
         {
             var users = await _userService.GetAsync();
@@ -79,6 +85,21 @@ namespace DominoAPI.UserRepositories
                 }
                 return builder.ToString();
             }
+        }
+
+        public string GetJWT(string username)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:Key"]!));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _config["JwtSettings:Issuer"],
+                audience: _config["JwtSettings:Audience"],
+                expires: DateTime.UtcNow.AddHours(2), 
+                signingCredentials: credentials
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
