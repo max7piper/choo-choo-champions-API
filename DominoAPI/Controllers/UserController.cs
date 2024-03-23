@@ -1,6 +1,7 @@
 using DominoAPI.Services;
 using DominoAPI.UserObjects;
 using DominoAPI.UserRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +29,7 @@ public class UserController : ControllerBase
         {
             return BadRequest("Failed to register user");
         }
+        newUser.Id = _userRepository.GetJWT(username);
         return Ok(newUser);
     }
 
@@ -37,11 +39,13 @@ public class UserController : ControllerBase
         User success = await _userRepository.login(username, password);
         if (success != null)
         {
+            success.Id = _userRepository.GetJWT(username);
             return Ok(success);
         }
         return BadRequest("Failed to login user. Incorrect username or password");
     }
 
+    [Authorize]
     [HttpPost("UpdateProfileImage")]
     public async Task<ActionResult<User>> UpdateProfileImage(String username, String imageURL)
     {
@@ -53,6 +57,7 @@ public class UserController : ControllerBase
         return BadRequest("Could not find or update that image.");
     }
 
+    [Authorize]
     [HttpGet("ProfileImage/{username}")]
     public async Task<ActionResult<string>> GetProfileImage(string username)
     {
@@ -64,6 +69,7 @@ public class UserController : ControllerBase
         return NotFound("Profile image not found for the given username.");
     }
 
+    [Authorize]
     [HttpGet("Profile/{username}")]
     public async Task<ActionResult<User>> GetProfile(String username)
     {

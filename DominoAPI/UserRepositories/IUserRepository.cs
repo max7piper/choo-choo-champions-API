@@ -42,5 +42,12 @@ namespace DominoAPI.UserRepositories
         /// <param name="username"></param>
         /// <returns>The user associated with that profile, or none.</returns>
         public Task<User> GetUser(String username);
+
+        /// <summary>
+        /// Generates a JWT for the user, which will be used for verification purposes.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns>The JWT.</returns>
+        public String GetJWT(String username);
     }
 }
