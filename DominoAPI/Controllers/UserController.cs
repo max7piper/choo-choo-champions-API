@@ -12,6 +12,7 @@ namespace DominoAPI.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IUserRepository _userRepository;
+    private readonly int EmailConfirmationConstant = 1;
 
     public UserController(IUserRepository userRepository) => _userRepository = userRepository;
 
@@ -40,6 +41,10 @@ public class UserController : ControllerBase
         if (success != null)
         {
             success.Id = _userRepository.GetJWT(username);
+            if(success.EmailConfirmation != EmailConfirmationConstant)
+            {
+                return BadRequest("Failed to login user. Please verify your email first.");
+            }
             return Ok(success);
         }
         return BadRequest("Failed to login user. Incorrect username or password");
@@ -92,4 +97,26 @@ public class UserController : ControllerBase
         return BadRequest("Failed to change password. Incorrect username or old password.");
     }
 
+    [HttpPost("sendEmailVerification")]
+    public async Task<ActionResult> SendEmailVerification(string username, string email)
+    {
+        var result = await _userRepository.SendEmailVerificationCode(username, email);
+        if (result)
+        {
+            return Ok("Email Verification has been sent.");
+        }
+        return BadRequest("Failed to send email, invalid email.");
+    }
+
+    [HttpPost("verifyEmailCode")]
+    public async Task<ActionResult> VerifyEmailVerificationCode(string username, int code)
+    {
+        var result = await _userRepository.VerifyEmailVerificationCode(username, code);
+        if(result != null)
+        {
+            result.Id = _userRepository.GetJWT(username);
+            return Ok("Email is verified!");
+        }
+        return BadRequest("Entered code does not match. Click to resend code, or reenter code.");
+    }
 }
