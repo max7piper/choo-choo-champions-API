@@ -126,6 +126,7 @@ namespace DominoAPI.UserRepositories
             int randomCode = random.Next(100000,999999);
             string htmlText = "<html><h1>Use this code to verify your email: " + randomCode + "</h1l></html>";
             string plainText = "Use this code to verify your email: " + randomCode;
+            // in case email is invalid
             try
             {
                 var emailClient = new EmailClient(connectionString);
