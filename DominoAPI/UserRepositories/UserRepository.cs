@@ -4,10 +4,6 @@ using System.Text;
 using DominoAPI.Services;
 using DominoAPI.UserObjects;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using Azure.Communication.Email;
-using Azure;
 
 namespace DominoAPI.UserRepositories
 {
@@ -119,47 +115,6 @@ namespace DominoAPI.UserRepositories
             return false;
         }
 
-        public async Task<bool> SendEmailVerificationCode(string username, string emailAddress)
-        {
-            string connectionString = _config["AzureEmailConnectionString"]!;
-            Random random = new Random();
-            int randomCode = random.Next(100000,999999);
-            string htmlText = "<html><h1>Use this code to verify your email: " + randomCode + "</h1l></html>";
-            string plainText = "Use this code to verify your email: " + randomCode;
-            try
-            {
-                var emailClient = new EmailClient(connectionString);
-                EmailSendOperation emailSendOperation = emailClient.Send(
-                    WaitUntil.Completed,
-                    senderAddress: "DoNotReply@d1044c8c-c563-4296-ad20-acfd871f4d53.azurecomm.net",
-                    recipientAddress: emailAddress,
-                    subject: "Email Verification for ChooChooChampions!",
-                    htmlContent: htmlText,
-                    plainTextContent: plainText);
-                User user = await _userService.GetByUsername(username);
-                user.EmailConfirmation = randomCode;
-                await _userService.UpdateAsync(username, user);
-                return true;
-            } catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-                return false;
-            }
-            
-        }
-
-        public async Task<User> VerifyEmailVerificationCode(string username, int verificationCode)
-        {
-            var user = await _userService.GetByUsername(username);
-            // -1 is our placeholder value so we must ensure that will not be spoofed and used
-            if(user != null && user.EmailConfirmation == verificationCode && verificationCode != -1)
-            {
-                user.EmailConfirmation = 1;
-                await _userService.UpdateAsync(username, user);
-                return user;
-            }
-            return null!;
-        }
     }
 
 }

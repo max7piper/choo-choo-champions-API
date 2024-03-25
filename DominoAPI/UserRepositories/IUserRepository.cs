@@ -59,19 +59,5 @@ namespace DominoAPI.UserRepositories
         /// <returns>True if the password is changed successfully, otherwise false.</returns>
         public Task<bool> ChangePassword(string username, string oldPassword, string newPassword);
 
-        /// <summary>
-        /// Send the user an email to their provided email address. Returns false if email was invalid.
-        /// </summary>
-        /// <param name="emailAddress">The provided email address.</param>
-        /// <returns>True if the email was sent successfully. False if not.</returns>
-        public Task<bool> SendEmailVerificationCode(String username, String emailAddress);
-
-        /// <summary>
-        /// Verifies that the user registered with their sent verification code. 
-        /// </summary>
-        /// <param name="username">The user's username.</param>
-        /// <param name="verificationCode">The user's verification code.</param>
-        /// <returns></returns>
-        public Task<User> VerifyEmailVerificationCode(String username, int verificationCode);
     }
 }

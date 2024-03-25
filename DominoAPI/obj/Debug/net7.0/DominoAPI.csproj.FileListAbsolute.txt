@@ -144,7 +144,3 @@ C:/Users/arjun/OneDrive/Documents/GitHub/choo-choo-champions-API/DominoAPI/obj/D
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
-/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/bin/Debug/net7.0/Azure.Communication.Email.dll
-/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/bin/Debug/net7.0/Azure.Core.dll
-/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/bin/Debug/net7.0/Microsoft.Bcl.AsyncInterfaces.dll
-/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/bin/Debug/net7.0/System.Memory.Data.dll

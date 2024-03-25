@@ -15,8 +15,6 @@ public class User
 
     public string Password { get; set; } = string.Empty;
 
-    public int EmailConfirmation { get; set; } = -1;
-
     public int TotalGameWins { get; set;} = 0;
 
     public int TotalRoundWins { get; set;} = 0;
