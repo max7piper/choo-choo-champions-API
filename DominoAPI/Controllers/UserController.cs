@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using DominoAPI.Services;
 using DominoAPI.UserObjects;
 using DominoAPI.UserRepositories;
@@ -52,9 +53,10 @@ public class UserController : ControllerBase
 
     [Authorize]
     [HttpPost("UpdateProfileImage")]
-    public async Task<ActionResult<User>> UpdateProfileImage(String username, [FromBody]byte[] image)
+    public async Task<ActionResult<User>> UpdateProfileImage(String username, [FromBody] Blob image)
     {
-        User result = await _userRepository.UpdateProfileImage(username, image);
+        byte[] binaryImage = image.GetBytes().ToArray();
+        User result = await _userRepository.UpdateProfileImage(username, binaryImage);
         if (result != null)
         {
             return Ok(result);
