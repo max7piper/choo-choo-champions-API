@@ -31,5 +31,5 @@ public class User
 
     public int PointRanking {get; set;} = 0;
 
-    public String ImageLink {get; set;} = String.Empty;
+    public String ImageLink {get; set;} = "https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Thomas_Tank_Engine_1.JPG/220px-Thomas_Tank_Engine_1.JPG";
 }
