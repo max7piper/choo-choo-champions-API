@@ -45,24 +45,20 @@ namespace DominoAPI.UserRepositories
             return user;
         }
 
-        public async Task<User> updateProfileImage(string username, string imageURL)
+        public async Task<User> UpdateProfileImage(String username, byte[] imageData)
         {
-            // get the user and update them
             User user = await _userService.GetByUsername(username);
-            if (user != null)
-            {
-                user.ImageLink = imageURL;
+            if(user!=null){
+                user.ImageLink = imageData;
                 await _userService.UpdateAsync(username, user);
             }
-
-            // return the updated user
             return await _userService.GetByUsername(username);
         }
 
-        public async Task<string> GetProfileImage(string username)
+        public async Task<byte[]> GetProfileImage(string username)
         {
             User user = await _userService.GetByUsername(username);
-            if (user != null && !string.IsNullOrEmpty(user.ImageLink))
+            if (user != null && user.ImageLink != null)
             {
                 return user.ImageLink;
             }

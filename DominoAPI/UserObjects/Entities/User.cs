@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -31,5 +32,5 @@ public class User
 
     public int PointRanking {get; set;} = 0;
 
-    public String ImageLink {get; set;} = "https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Thomas_Tank_Engine_1.JPG/220px-Thomas_Tank_Engine_1.JPG";
+    public byte[] ImageLink {get; set;} = new byte[0];
 }
