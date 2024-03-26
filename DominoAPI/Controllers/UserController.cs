@@ -52,9 +52,9 @@ public class UserController : ControllerBase
 
     [Authorize]
     [HttpPost("UpdateProfileImage")]
-    public async Task<ActionResult<User>> UpdateProfileImage(String username, String imageURL)
+    public async Task<ActionResult<User>> UpdateProfileImage(String username, [FromBody]byte[] image)
     {
-        User result = await _userRepository.updateProfileImage(username, imageURL);
+        User result = await _userRepository.UpdateProfileImage(username, image);
         if (result != null)
         {
             return Ok(result);
@@ -64,10 +64,10 @@ public class UserController : ControllerBase
 
     [Authorize]
     [HttpGet("ProfileImage/{username}")]
-    public async Task<ActionResult<string>> GetProfileImage(string username)
+    public async Task<ActionResult<byte[]>> GetProfileImage(string username)
     {
-        string profileImageURL = await _userRepository.GetProfileImage(username);
-        if (!string.IsNullOrEmpty(profileImageURL))
+        byte[] profileImageURL = await _userRepository.GetProfileImage(username);
+        if (profileImageURL != null)
         {
             return Ok(profileImageURL);
         }
