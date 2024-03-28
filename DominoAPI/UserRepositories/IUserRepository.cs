@@ -74,5 +74,21 @@ namespace DominoAPI.UserRepositories
         /// <param name="verificationCode">The user's verification code.</param>
         /// <returns></returns>
         public Task<User> VerifyEmailVerificationCode(String username, int verificationCode);
+
+        /// <summary>
+        /// Updates the username of a user.
+        /// </summary>
+        /// <param name="username">The current username of the user.</param>
+        /// <param name="newUsername">The new username to be set.</param>
+        /// <returns>The updated user object, or null if the operation fails.</returns>
+        public Task<User?> UpdateUsername(string username, string newUsername);
+
+        /// <summary>
+        /// Updates the email address of a user.
+        /// </summary>
+        /// <param name="username">The username of the user whose email is being updated.</param>
+        /// <param name="newEmail">The new email address to be set.</param>
+        /// <returns>The updated user object, or null if the operation fails.</returns>
+        public Task<User?> UpdateEmail(string username, string newEmail);
     }
 }
