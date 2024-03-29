@@ -48,7 +48,8 @@ namespace DominoAPI.UserRepositories
         public async Task<User> UpdateProfileImage(String username, byte[] imageData)
         {
             User user = await _userService.GetByUsername(username);
-            if(user!=null){
+            if (user != null)
+            {
                 user.ImageLink = imageData;
                 await _userService.UpdateAsync(username, user);
             }
@@ -119,7 +120,7 @@ namespace DominoAPI.UserRepositories
         {
             string connectionString = _config["AzureEmailConnectionString"]!;
             Random random = new Random();
-            int randomCode = random.Next(100000,999999);
+            int randomCode = random.Next(100000, 999999);
             string htmlText = "<html><h1>Use this code to verify your email: " + randomCode + "</h1l></html>";
             string plainText = "Use this code to verify your email: " + randomCode;
             try
@@ -136,19 +137,20 @@ namespace DominoAPI.UserRepositories
                 user.EmailConfirmation = randomCode;
                 await _userService.UpdateAsync(username, user);
                 return true;
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
                 return false;
             }
-            
+
         }
 
         public async Task<User> VerifyEmailVerificationCode(string username, int verificationCode)
         {
             var user = await _userService.GetByUsername(username);
             // -1 is our placeholder value so we must ensure that will not be spoofed and used
-            if(user != null && user.EmailConfirmation == verificationCode && verificationCode != -1)
+            if (user != null && user.EmailConfirmation == verificationCode && verificationCode != -1)
             {
                 user.EmailConfirmation = 1;
                 await _userService.UpdateAsync(username, user);
@@ -156,6 +158,48 @@ namespace DominoAPI.UserRepositories
             }
             return null!;
         }
+
+        public async Task<User?> UpdateUsername(string username, string newUsername)
+        {
+            var user = await _userService.GetByUsername(username);
+            if (user != null)
+            {
+                var existingUser = await _userService.GetByUsername(newUsername);
+                if (existingUser != null && existingUser.Username != username)
+                {
+                    return null;
+                }
+
+                user.Username = newUsername;
+                await _userService.UpdateAsync(username, user);
+                return user;
+            }
+            return null;
+        }
+
+        public async Task<User?> UpdateEmail(string username, string newEmail)
+        {
+            var user = await _userService.GetByUsername(username);
+            if (user != null)
+            {
+                var existingUserWithEmail = await _userService.GetByEmail(newEmail);
+                if (existingUserWithEmail != null && existingUserWithEmail.Username != username)
+                {
+                    return null;
+                }
+
+                user.Email = newEmail;
+                user.EmailConfirmation = -1;
+                await _userService.UpdateAsync(username, user);
+                return user;
+            }
+            return null;
+        }
+
+
+
+
     }
+
 
 }

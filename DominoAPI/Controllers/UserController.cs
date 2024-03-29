@@ -42,7 +42,7 @@ public class UserController : ControllerBase
         if (success != null)
         {
             success.Id = _userRepository.GetJWT(username);
-            if(success.EmailConfirmation != EmailConfirmationConstant)
+            if (success.EmailConfirmation != EmailConfirmationConstant)
             {
                 return BadRequest("Failed to login user. Please verify your email first.");
             }
@@ -114,11 +114,34 @@ public class UserController : ControllerBase
     public async Task<ActionResult> VerifyEmailVerificationCode(string username, int code)
     {
         var result = await _userRepository.VerifyEmailVerificationCode(username, code);
-        if(result != null)
+        if (result != null)
         {
             result.Id = _userRepository.GetJWT(username);
             return Ok("Email is verified!");
         }
         return BadRequest("Entered code does not match. Click to resend code, or reenter code.");
     }
+
+    [HttpPost("updateUsername")]
+    public async Task<ActionResult<User>> UpdateUsername(string username, string newUsername)
+    {
+        var result = await _userRepository.UpdateUsername(username, newUsername);
+        if (result != null)
+        {
+            return Ok(result);
+        }
+        return BadRequest("Username is invalid or already taken.");
+    }
+
+    [HttpPost("updateEmail")]
+    public async Task<ActionResult<User>> UpdateEmail(string username, string newEmail)
+    {
+        var result = await _userRepository.UpdateEmail(username, newEmail);
+        if (result != null)
+        {
+            return Ok(result);
+        }
+        return BadRequest("Email is invalid or already taken.");
+    }
 }
+
