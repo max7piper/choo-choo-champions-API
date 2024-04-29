@@ -52,31 +52,6 @@ public class UserController : ControllerBase
     }
 
     [Authorize]
-    [HttpPost("UpdateProfileImage")]
-    public async Task<ActionResult<User>> UpdateProfileImage(String username, [FromBody] Blob image)
-    {
-        byte[] binaryImage = image.GetBytes().ToArray();
-        User result = await _userRepository.UpdateProfileImage(username, binaryImage);
-        if (result != null)
-        {
-            return Ok(result);
-        }
-        return BadRequest("Could not find or update that image.");
-    }
-
-    [Authorize]
-    [HttpGet("ProfileImage/{username}")]
-    public async Task<ActionResult<byte[]>> GetProfileImage(string username)
-    {
-        byte[] profileImageURL = await _userRepository.GetProfileImage(username);
-        if (profileImageURL != null)
-        {
-            return Ok(profileImageURL);
-        }
-        return NotFound("Profile image not found for the given username.");
-    }
-
-    [Authorize]
     [HttpGet("Profile/{username}")]
     public async Task<ActionResult<User>> GetProfile(String username)
     {
@@ -137,6 +112,18 @@ public class UserController : ControllerBase
     public async Task<ActionResult<User>> UpdateEmail(string username, string newEmail)
     {
         var result = await _userRepository.UpdateEmail(username, newEmail);
+        if (result != null)
+        {
+            return Ok(result);
+        }
+        return BadRequest("Email is invalid or already taken.");
+    }
+
+    [Authorize]
+    [HttpPost("updateStats")]
+    public async Task<ActionResult<User>> UpdateStats(string username, int score, bool wonRound, bool wonGame, bool endGame)
+    {
+        var result = await _userRepository.UpdateUserStats(username, score, wonRound, wonGame, endGame);
         if (result != null)
         {
             return Ok(result);

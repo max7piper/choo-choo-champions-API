@@ -32,14 +32,4 @@ public class UserService
 
     public async Task UpdateAsync(string username, User updatedUser) =>
         await _userCollection.ReplaceOneAsync(x => x.Username == username, updatedUser);
-
-    public async Task<byte[]> GetProfileImage(string username)
-    {
-        User user = await _userCollection.Find(u => u.Username == username).FirstOrDefaultAsync();
-        if (user != null)
-        {
-            return user.ImageLink;
-        }
-        return null!;
-    }
 }

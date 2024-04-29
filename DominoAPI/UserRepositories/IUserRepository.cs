@@ -23,21 +23,6 @@ namespace DominoAPI.UserRepositories
         public Task<User> login(String username, String password);
 
         /// <summary>
-        /// Updates a user's profile image.
-        /// </summary>
-        /// <param name="username">The user that needs to be updated.</param>
-        /// <param name="imageData">The image that the user is uploading.</param>
-        /// <returns>The User</returns>
-        public Task<User> UpdateProfileImage(String username, byte[] imageData);
-
-        /// <summary>
-        /// Retrieves the profile image URL associated with the given username.
-        /// </summary>
-        /// <param name="username">The username of the user whose profile image URL is to be retrieved.</param>
-        /// <returns>The profile image URL, or null if not found.</returns>
-        public Task<byte[]> GetProfileImage(string username);
-
-        /// <summary>
         /// Retrieves a user's profile. 
         /// </summary>
         /// <param name="username"></param>
@@ -90,5 +75,16 @@ namespace DominoAPI.UserRepositories
         /// <param name="newEmail">The new email address to be set.</param>
         /// <returns>The updated user object, or null if the operation fails.</returns>
         public Task<User?> UpdateEmail(string username, string newEmail);
+
+        /// <summary>
+        /// Updates the users game statistics.
+        /// </summary>
+        /// <param name="username">The username of the user whose stats are being updated.</param>
+        /// <param name="score">The score of the game.</param>
+        /// <param name="wonRound">Whether the user won this round or not.</param>
+        /// <param name="wonGame">Whether the user won this game or not.</param>
+        /// <param name="endGame">Whether the game ended or not.</param>
+        /// <returns></returns>
+        public Task<User?> UpdateUserStats(string username, int score, bool wonRound, bool wonGame, bool endGame);
     }
 }
