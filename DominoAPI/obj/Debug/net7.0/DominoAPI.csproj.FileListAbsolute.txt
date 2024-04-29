@@ -84,7 +84,6 @@
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/Debug/net7.0/staticwebassets.build.json
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/Debug/net7.0/staticwebassets.development.json
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/Debug/net7.0/scopedcss/bundle/DominoAPI.styles.css
-/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/Debug/net7.0/DominoAPI.csproj.CopyComplete
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/Debug/net7.0/DominoAPI.dll
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/Debug/net7.0/refint/DominoAPI.dll
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/Debug/net7.0/DominoAPI.pdb
@@ -148,3 +147,4 @@ C:/Users/arjun/OneDrive/Documents/GitHub/choo-choo-champions-API/DominoAPI/obj/D
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/bin/Debug/net7.0/Azure.Core.dll
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/bin/Debug/net7.0/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/bin/Debug/net7.0/System.Memory.Data.dll
+/Users/max/Documents/GItHub Raikes/choo-choo-champions-API/DominoAPI/obj/Debug/net7.0/DominoAPI.csproj.CopyComplete
