@@ -45,27 +45,6 @@ namespace DominoAPI.UserRepositories
             return user;
         }
 
-        public async Task<User> UpdateProfileImage(String username, byte[] imageData)
-        {
-            User user = await _userService.GetByUsername(username);
-            if (user != null)
-            {
-                user.ImageLink = imageData;
-                await _userService.UpdateAsync(username, user);
-            }
-            return await _userService.GetByUsername(username);
-        }
-
-        public async Task<byte[]> GetProfileImage(string username)
-        {
-            User user = await _userService.GetByUsername(username);
-            if (user != null && user.ImageLink != null)
-            {
-                return user.ImageLink;
-            }
-            return null!;
-        }
-
         public Task<User> GetUser(string username)
         {
             return _userService.GetByUsername(username)!;
@@ -196,9 +175,27 @@ namespace DominoAPI.UserRepositories
             return null;
         }
 
-
-
-
+        public async Task<User?> UpdateUserStats(string username, int score, bool wonRound, bool wonGame, bool endGame)
+        {
+            var user = await _userService.GetByUsername(username);
+            if (user != null)
+            {
+                user.TotalPoints +=score;
+                user.TotalRounds += 1;
+                if(wonRound){
+                    user.TotalRoundWins += 1;
+                } 
+                if(wonGame){
+                    user.TotalGameWins += 1;
+                }
+                if(endGame){
+                    user.TotalGames += 1;
+                }
+                await _userService.UpdateAsync(username, user);
+                return user;
+            }   
+            return null;
+        }
     }
 
 

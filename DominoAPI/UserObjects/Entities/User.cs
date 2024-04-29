@@ -22,15 +22,10 @@ public class User
 
     public int TotalRoundWins { get; set;} = 0;
 
-    public double AveragePointsPerGame {get; set;} = 0.0;
-
-    public double AveragePointsPerRound {get; set;} = 0.0;
-
     public int TotalPoints {get; set;} = 0;
 
-    public int WinRanking {get; set;} = 0;
+    public int TotalGames {get; set;} = 0;
 
-    public int PointRanking {get; set;} = 0;
+    public int TotalRounds {get; set;} = 0;
 
-    public byte[] ImageLink {get; set;} = new byte[0];
 }
